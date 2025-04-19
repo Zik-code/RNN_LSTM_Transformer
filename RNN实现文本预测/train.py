@@ -11,19 +11,17 @@ import numpy as np
  
 text = ['hey how are you', 'good i am fine', 'have a nice day']
  
-# Join all the sentences together and extract the unique characters from the combined sentences
-# 将所有句子连接在一起，并从组合的句子中提取独特的字符。
 chars = set(''.join(text))
 # print(chars)# 输出 : {'y', 'o', ' ', 'd', 'f', 'n', 'm', 'i', 'w', 'r', 'u', 'v', 'h', 'c', 'g', 'e', 'a'} (注意:输出不定，但都包含了所有的字符)
- 
-# Creating a dictionary that maps integers to the characters
+
 int2char = dict(enumerate(chars))
-# print(int2char)
+# print('int2char=',int2char)
+# 输出：int2char= {0: 'a', 1: 'r', 2: 'u', ············}
  
-# Creating another dictionary that maps characters to integers
+# 对 int2char反转
 char2int = {char: ind for ind, char in int2char.items()}
-# char2int 字典看起来像这样：它包含我们句子中出现的所有字母/符号，并将它们中的每一个映射到一个唯一的整数。
 # print(char2int)
+# 输出：char2int = {'e': 0, 'y': 1, 'm': 2, ···········}
  
 # ------------------------------------------------------------------------------------
 # 接下来，我们将填充(padding)输入句子以确保所有句子都是标准长度。
@@ -35,11 +33,10 @@ char2int = {char: ind for ind, char in int2char.items()}
  
 # Finding the length of the longest string in our data
 maxlen = len(max(text, key=len))
- 
-# Padding
- 
-# A simple loop that loops through the list of sentences and adds a ' ' whitespace until the length of
-# the sentence matches the length of the longest sentence
+print('maxlen=',maxlen)
+# 输出 maxlen= 15，找到最长的句子hey how are 占15个字符。
+
+# 填充长度不足15的句子为15
 for i in range(len(text)):
   while len(text[i])<maxlen:
       text[i] += ' '
