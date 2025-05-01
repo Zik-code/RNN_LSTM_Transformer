@@ -15,7 +15,16 @@
 # 2. 搞清整个模型的流动中形状的改变
 
 
-class EncoderLayer(nn.Module):
+class Encoder(nn.Module):
+    def __init__(self):
+        super(Encoder, self).__init__()
+        self.src_emb = nn.Embedding(src_vocab_size, d_model)
+        self.pos_emb = PositionalEncoding(d_model)
+        self.layers = nn.ModuleList([EncoderLayer() for _ in range(n_layers)])
+
+    def forward(self, enc_inputs):
+        
+
 
 
 class DecoderLayer(nn.Module)  :
@@ -46,6 +55,16 @@ if __name__ == "__main__":
     tgt_len = 5
 
     d_model = 512
+    # 前馈神经网络linear层的输出维度
+    d_ff = 2048
+    d_k = d_v =64
+    # 编码器解码器和堆叠的层数
+    n_layers = 6
+    # 注意力头数
+    n_heads = 8
+
+    model = Transformer()
+
     
 
 
